@@ -1,0 +1,23 @@
+{% extends 'cqtest/base.html' %}
+{% block content %}
+    {% for test in tests %}
+        <div class="test">
+            <h1><a href="{% url 'test_detail' pk=test.pk %}">{{ test.name }}</a></h1>
+            {% if test.requirement %}
+                <p>{{ test.requirement|linebreaksbr }}</p>
+            {% endif %}
+            {% if test.desc %}
+                <p>{{ test.desc|linebreaksbr }}</p>
+            {% endif %}
+            {% if test.stepdesc %}
+                <p>Step: {{ test.stepdesc|linebreaksbr }}</p>
+            {% endif %}
+            {% if test.stepexpresult %}
+                <p>Expresult: {{ test.stepexpresult|linebreaksbr }}</p>
+            {% endif %}
+            {% if test.tokenised %}
+                <p>Tokens: {{ test.tokenised|linebreaksbr }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'cqtest/base.html' %}
+
+{% block content %}
+    <div class="test">
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'test_edit' pk=test.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h1>{{ test.name }}</h1>
+        {% if test.requirement %}
+            <p>{{ test.requirement|linebreaksbr }}</p>
+        {% endif %}
+        {% if test.desc %}
+            <p>{{ test.desc|linebreaksbr }}</p>
+        {% endif %}
+        {% if test.stepdesc %}
+            <p>Step: {{ test.stepdesc|linebreaksbr }}</p>
+        {% endif %}
+        {% if test.stepexpresult %}
+            <p>Expresult: {{ test.stepexpresult|linebreaksbr }}</p>
+        {% endif %}
+        {% if  test.tokenised %}
+                <p>Tokens: {{ test.tokenised|linebreaksbr }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
